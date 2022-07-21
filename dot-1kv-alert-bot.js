@@ -229,7 +229,7 @@ bot.on('error', (err) => {
 });
 
 (async () => {
-  const wsProvider = new WsProvider('ws://localhost:30225')
+  const wsProvider = new WsProvider(config.validator_url)
   const api = await ApiPromise.create({ provider: wsProvider })
 
   api.query.system.events((events) => {
@@ -353,7 +353,7 @@ bot.on('error', (err) => {
       slog('Checking if queued for next session')
       try {
         // const wsProvider = new WsProvider('wss://kusama-rpc.polkadot.io')
-        const wsProvider = new WsProvider('ws://localhost:30225')
+        const wsProvider = new WsProvider(config.validator_url)
         const api = await ApiPromise.create({ provider: wsProvider })
         const keys = await api.query.session.queuedKeys()
         keys.forEach((k, idx) => {
