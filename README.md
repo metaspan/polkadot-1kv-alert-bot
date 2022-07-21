@@ -41,4 +41,4 @@ Here is the list of commands I understand:
 
 ## Example messages
 
-![image](https://user-images.githubusercontent.com/1845970/172218717-65e69252-9cb4-4cee-a92e-95d3679a0ad7.png)
+<img width="441" alt="image" src="https://user-images.githubusercontent.com/1845970/179616600-8afb0e70-ac39-4aa3-93c4-456b428a9128.png">
