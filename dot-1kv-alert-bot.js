@@ -252,7 +252,7 @@ bot.on('error', (err) => {
           const amount = event.data[1]
           state.subscribers.forEach(sub => {
             // const c = state.candidates.find(f => f.stash === stash)
-            if (sub.targets.includes(stash)) {
+            if (sub.targets?.find(target => target.stash === stash)) {
               // const t = sub.targets[stash]
               try {
                 bot.createMessage(
@@ -296,6 +296,19 @@ bot.on('error', (err) => {
       // } else {
       //   console.log(`\t${event.section}:${event.method}:: (phase=${phase.toString()})`)
       }
+
+      // staking-miner submits electionProviderMultiPhase.submit
+      if (event.section === 'electionProviderMultiPhase') {
+        // && event.method.toUpperCase() === 'SUBMIT') {
+        // console.log(event.section, event.method, phase.toString())
+        console.log(event, phase.toString())
+        bot.createMessage(
+          '994441486575869952',
+          `at ${moment().format('YYYY.MM.DD HH:mm:ss')}`
+            + `\t${event.section}:${event.method}:: (phase=${phase.toString()})`
+        )
+      } // end of electionProviderMultiPhase.submit
+      
     })
   })
   
@@ -374,7 +387,7 @@ bot.on('error', (err) => {
       let age = moment().diff(moment(sub.updatedAt), 'seconds')
       slog(`id: ${sub.id}, age: ${age}, updateAt ${sub.updatedAt}`)
       if (sub.updatedAt === '' || sub.updatedAt === undefined || age > sub.interval) {
-        sub.targets.forEach( t => {
+        sub.targets?.forEach( t => {
           const c = new Candidate(state.candidates.find(c => c.stash === t.stash))
           if (c) {
             // // const wasValid = c.valid
