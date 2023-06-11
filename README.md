@@ -1,5 +1,9 @@
 # polkadot-1kv-alert-bot
 
+!! THIS REPO IS ARCHIVED !!
+
+Follow here if you want latest updates: https://github.com/metaspan/dotsama-alert-bots
+
 Use this bot to notify you of valid / active status on Polkadot 1KV
 
 ## Getting started
